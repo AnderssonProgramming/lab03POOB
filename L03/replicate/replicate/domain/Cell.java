@@ -10,7 +10,7 @@ public class Cell extends Artefact implements Thing{
     protected char nextState;
     protected Color color;
     private AManufacturing aManufactuing;
-    private int row,column;
+    protected int row,column;
 
 
     /**Create a new cell (<b>row,column</b>) in the aManufactuing <b>ac</b>..
@@ -20,7 +20,7 @@ public class Cell extends Artefact implements Thing{
      * @param active
      */
     public Cell(AManufacturing am,int row, int column, boolean active){
-        aManufactuing=am;
+        this.aManufactuing=am;
         this.row=row;
         this.column=column;
         state=(active ? Artefact.ACTIVE: Artefact.INACTIVE);
@@ -61,12 +61,12 @@ public class Cell extends Artefact implements Thing{
 
     /**Change its actual state
      */
-    public final void change(){
+    public void change(){
         step();
         state=nextState;
     }
     
-   
+    
     public int neighborsActive(){
         return aManufactuing.neighborsActive(row,column);
     }

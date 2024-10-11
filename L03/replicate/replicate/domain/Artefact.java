@@ -34,7 +34,7 @@ public abstract class Artefact{
     /**Returns if active
     @return true, if ACTIVE; false, otherwise
      */
-    public final boolean isActive(){
+    public boolean isActive(){
         return (state == Artefact.ACTIVE) ;
     }
     

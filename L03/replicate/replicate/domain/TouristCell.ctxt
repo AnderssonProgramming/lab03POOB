@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=TouristCell
+comment1.params=am\ row\ column\ active
+comment1.target=TouristCell(AManufacturing,\ int,\ int,\ boolean)
+comment2.params=
+comment2.target=void\ decide()
+comment3.params=
+comment3.target=void\ change()
+comment4.params=
+comment4.target=void\ updateColor()
+numComments=5
