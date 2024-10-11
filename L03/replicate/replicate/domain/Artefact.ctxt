@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Artefact
+comment1.params=
+comment1.target=Artefact()
+comment1.text=Create\ a\ new\ Artefact\r\n\ \r\n
+comment2.params=
+comment2.target=void\ step()
+comment2.text=The\ Artefact\ makes\ one\ step\r\n\ \r\n
+comment3.params=
+comment3.target=int\ getSteps()
+comment3.text=Returns\ the\ step\r\n\ \ \ \ @return\ \r\n
+comment4.params=
+comment4.target=boolean\ isActive()
+comment4.text=Returns\ if\ active\r\n\ \ \ \ @return\ true,\ if\ ACTIVE;\ false,\ otherwise\r\n
+numComments=5
