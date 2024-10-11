@@ -9,7 +9,7 @@ import java.awt.Color;
 public class Cell extends Artefact implements Thing{
     protected char nextState;
     protected Color color;
-    private AManufacturing aManufactuing;
+    private AManufacturing aManufacturing;
     protected int row,column;
 
 
@@ -20,12 +20,12 @@ public class Cell extends Artefact implements Thing{
      * @param active
      */
     public Cell(AManufacturing am,int row, int column, boolean active){
-        this.aManufactuing=am;
+        this.aManufacturing=am;
         this.row=row;
         this.column=column;
         state=(active ? Artefact.ACTIVE: Artefact.INACTIVE);
         nextState=(active ? Artefact.ACTIVE: Artefact.INACTIVE);
-        aManufactuing.setThing(row,column,(Thing)this);    
+        aManufacturing.setThing(row,column,(Thing)this);    
         color=Color.black;
     }
     
@@ -68,11 +68,11 @@ public class Cell extends Artefact implements Thing{
     
     
     public int neighborsActive(){
-        return aManufactuing.neighborsActive(row,column);
+        return aManufacturing.neighborsActive(row,column);
     }
     
     public boolean neighborIsEmpty(int dr,int dc){
-        return aManufactuing.isEmpty(row+dr,column+dc);
+        return aManufacturing.isEmpty(row+dr,column+dc);
     }    
 
 }

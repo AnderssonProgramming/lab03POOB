@@ -49,6 +49,12 @@ public class AManufacturing{
         setThing(0, 0, mercury);
         setThing(0, getSize() - 1, arsenic);
         
+        // Reflective Cells
+        ReflectiveCell alice = new ReflectiveCell(this, 25, 25, true);
+        ReflectiveCell bob = new ReflectiveCell(this, 30, 30, true);
+        setThing(25, 25, alice);
+        setThing(30, 30, bob);
+        
     }
     
     public int neighborsActive(int r, int c){
@@ -68,7 +74,7 @@ public class AManufacturing{
         return (inLatice(r,c) && lattice[r][c]==null);
     }    
         
-    private boolean inLatice(int r, int c){
+    protected boolean inLatice(int r, int c){
         return ((0<=r) && (r<SIZE) && (0<=c) && (c<SIZE));
     }
     
