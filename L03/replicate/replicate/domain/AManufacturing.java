@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 
 /*No olviden adicionar la documentacion*/
 public class AManufacturing{
-    static private int SIZE=50;
+    private static int SIZE=50;
     private Thing[][] lattice;
     
     public AManufacturing() {
@@ -18,7 +18,7 @@ public class AManufacturing{
         someThings();
     }
 
-    public int  getSize(){
+    public int getSize(){
         return SIZE;
     }
 
@@ -30,11 +30,25 @@ public class AManufacturing{
         lattice[r][c]=e;
     }
 
-    public void someThings(){    
+    public void someThings(){  
+        //CELLS
         Cell yersinia = new Cell(this,10,10, true);
         Cell listeria = new Cell(this,15,15,true);
         setThing(10,10,yersinia);
         setThing(15,15,listeria);
+        
+        //TOURIST CELLS
+        TouristCell move = new TouristCell(this, 5,5,true);
+        TouristCell walk = new TouristCell(this, 20,20,true);
+        setThing(5,5,move);
+        setThing(20,20,walk);
+        
+        //POISON
+        Poison mercury = new Poison();
+        Poison arsenic = new Poison();
+        setThing(0, 0, mercury);
+        setThing(0, getSize() - 1, arsenic);
+        
     }
     
     public int neighborsActive(int r, int c){
@@ -60,7 +74,7 @@ public class AManufacturing{
     
    
     public void ticTac() {
-    // Determinar el próximo estado de todas las células
+    // Determine the next state of cells
     for (int r = 0; r < SIZE; r++) {
         for (int c = 0; c < SIZE; c++) {
             Thing thing = lattice[r][c];
@@ -69,7 +83,7 @@ public class AManufacturing{
             }
         }
     }
-    // Actualizar el estado de todas las células
+    // Update the state of cells
     for (int r = 0; r < SIZE; r++) {
         for (int c = 0; c < SIZE; c++) {
             Thing thing = lattice[r][c];
