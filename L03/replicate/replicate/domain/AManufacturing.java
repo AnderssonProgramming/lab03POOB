@@ -61,22 +61,18 @@ public class AManufacturing{
         
         // Reflective Cells - unitTest compilation in program
         ReflectiveCell Pedraza = new ReflectiveCell(this, 5, 5, true);
-        ReflectiveCell Sanchez = new ReflectiveCell(this, 5, 6, true);
+       // ReflectiveCell Sanchez = new ReflectiveCell(this, 5, 6, true);
         setThing(5, 5, Pedraza);
-        setThing(5, 6, Sanchez);
+        //setThing(5, 6, Sanchez);
         
         // STICKY WALL
         // Define rows for each Wall
-        int pedrazaRow = 3; // Example row for the Pedraza Wall
+        int pedrazaRow = 4; // Example row for the Pedraza Wall
         int sanchesRow = 19; // Example row for the Sanches Wall
     
         // Create the Walls with your names
         StickyWall pedrazaWall = new StickyWall(this, pedrazaRow);
         StickyWall sanchesWall = new StickyWall(this, sanchesRow);
-        
-        // Create a new reflective cel on the sticky wall
-        ReflectiveCell doomed = new ReflectiveCell(this, 3, 5, true);
-        setThing(3, 5, Pedraza);
         
     }
     
