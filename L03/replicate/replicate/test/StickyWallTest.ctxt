@@ -2,10 +2,14 @@
 comment0.target=StickyWallTest
 comment1.params=
 comment1.target=void\ setUp()
+comment1.text=\r\n\ Sets\ up\ the\ manufacturing\ environment\ and\ the\ StickyWall\ instances\ before\ each\ test.\r\n
 comment2.params=
 comment2.target=void\ testReflectiveCellNotCreatedWhenOnStickyWall()
+comment2.text=\r\n\ Tests\ that\ a\ ReflectiveCell\ cannot\ be\ created\ on\ the\ same\ position\ as\ a\ StickyWall.\r\n\ Verifies\ that\ the\ StickyWall\ remains\ at\ its\ position.\r\n
 comment3.params=
 comment3.target=void\ testTouristCellStuckWhenCreatedAdjacentToStickyWall()
+comment3.text=\r\n\ Tests\ that\ a\ TouristCell\ becomes\ stuck\ when\ created\ adjacent\ to\ a\ StickyWall.\r\n\ Verifies\ that\ the\ TouristCell\ becomes\ stuck\ and\ cannot\ move\ after\ interaction.\r\n
 comment4.params=
 comment4.target=void\ testCellsStuckWhenAdjacentToStickyWalls()
+comment4.text=\r\n\ Tests\ that\ both\ TouristCell\ and\ ReflectiveCell\ become\ stuck\ when\ adjacent\ to\ a\ StickyWall.\r\n\ Verifies\ that\ both\ cells\ cannot\ move\ after\ interaction\ with\ the\ StickyWall.\r\n
 numComments=5

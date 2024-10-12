@@ -2,8 +2,11 @@
 comment0.target=ReflectiveCellInteractionTest
 comment1.params=
 comment1.target=void\ setUp()
+comment1.text=\r\n\ Sets\ up\ the\ manufacturing\ environment\ and\ creates\ ReflectiveCells\ before\ each\ test.\r\n
 comment2.params=
 comment2.target=void\ testPedrazaAndSanchesInteraction()
+comment2.text=\r\n\ Tests\ the\ interaction\ between\ the\ "Pedraza"\ and\ "Sanches"\ ReflectiveCells\ over\ multiple\ tic-tac\ cycles.\r\n\ Ensures\ that\ the\ cells\ stay\ within\ bounds,\ do\ not\ overlap,\ and\ remain\ active.\r\n
 comment3.params=row\ col
 comment3.target=boolean\ isWithinBounds(int,\ int)
+comment3.text=\r\n\ Checks\ if\ the\ given\ row\ and\ column\ are\ within\ the\ bounds\ of\ the\ manufacturing\ environment.\r\n\r\n\ @param\ row\ The\ row\ to\ check.\r\n\ @param\ col\ The\ column\ to\ check.\r\n\ @return\ True\ if\ the\ row\ and\ column\ are\ within\ bounds,\ false\ otherwise.\r\n
 numComments=4

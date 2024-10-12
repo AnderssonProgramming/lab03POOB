@@ -1,3 +1,7 @@
+/**
+ * Unit tests for the StickyWall class and its interactions with other cells in the manufacturing environment.
+ * These tests ensure that the StickyWall correctly prevents cells from occupying its space and causes adjacent cells to become stuck.
+ */
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,13 +10,27 @@ import org.junit.jupiter.api.Test;
 import domain.*;
 
 public class StickyWallTest {
+    /**
+     * The manufacturing environment used for the tests.
+     */
     private AManufacturing manufacturing;
+
+    /**
+     * Instances of StickyWall used in the tests.
+     */
     private StickyWall stickyWall;
-    private ReflectiveCell reflectiveCell;
-    private TouristCell touristCell;
     private StickyWall pedrazaWall;
     private StickyWall sanchesWall;
 
+    /**
+     * Instances of cells used in the tests.
+     */
+    private ReflectiveCell reflectiveCell;
+    private TouristCell touristCell;
+
+    /**
+     * Sets up the manufacturing environment and the StickyWall instances before each test.
+     */
     @BeforeEach
     public void setUp() {
         manufacturing = new AManufacturing();
@@ -28,6 +46,10 @@ public class StickyWallTest {
         sanchesWall = new StickyWall(manufacturing, sanchesRow);
     }
 
+    /**
+     * Tests that a ReflectiveCell cannot be created on the same position as a StickyWall.
+     * Verifies that the StickyWall remains at its position.
+     */
     @Test
     public void testReflectiveCellNotCreatedWhenOnStickyWall() {
         // Create a ReflectiveCell on the StickyWall
@@ -45,6 +67,10 @@ public class StickyWallTest {
         assertTrue(isAWall, "The thing at this position should still be an instance of StickyWall.");
     }
 
+    /**
+     * Tests that a TouristCell becomes stuck when created adjacent to a StickyWall.
+     * Verifies that the TouristCell becomes stuck and cannot move after interaction.
+     */
     @Test
     public void testTouristCellStuckWhenCreatedAdjacentToStickyWall() {
         // Create a TouristCell adjacent to the StickyWall
@@ -72,6 +98,10 @@ public class StickyWallTest {
         assertEquals(initialCol, touristCell.getColumn(), "The TouristCell should not move once stuck.");
     }
     
+    /**
+     * Tests that both TouristCell and ReflectiveCell become stuck when adjacent to a StickyWall.
+     * Verifies that both cells cannot move after interaction with the StickyWall.
+     */
     @Test
     public void testCellsStuckWhenAdjacentToStickyWalls() {
         // Place a TouristCell adjacent to the Sanches Wall on row 18, column 10

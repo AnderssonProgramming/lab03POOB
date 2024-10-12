@@ -1,3 +1,7 @@
+/**
+ * Unit tests for the ReflectiveCell class to ensure correct behavior, including movement, bouncing, and interaction with other objects.
+ * These tests verify the ReflectiveCell's ability to move to neighboring cells, bounce back when blocked, and change state when encountering poison.
+ */
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,9 +11,19 @@ import domain.*;
 import java.awt.Color;
 
 public class ReflectiveCellTest {
+    /**
+     * The manufacturing environment used for the tests.
+     */
     private AManufacturing manufacturing;
+
+    /**
+     * The ReflectiveCell instance used in the tests.
+     */
     private ReflectiveCell reflectiveCell;
 
+    /**
+     * Sets up the manufacturing environment and creates a ReflectiveCell before each test.
+     */
     @BeforeEach
     public void setUp() {
         manufacturing = new AManufacturing();
@@ -17,6 +31,10 @@ public class ReflectiveCellTest {
         manufacturing.setThing(1, 1, reflectiveCell);
     }
 
+    /**
+     * Tests that the ReflectiveCell moves to a neighboring cell or bounces back when it reaches a boundary.
+     * Verifies that the movement is valid and the cell does not move outside the allowed range.
+     */
     @Test
     public void testRandomMovementAndBounce() {
         // Save the initial position
@@ -32,12 +50,16 @@ public class ReflectiveCellTest {
         int newCol = reflectiveCell.getColumn();
 
         assertTrue(
-            // abs for the absolute value of diference
+            // abs for the absolute value of difference
             (Math.abs(newRow - initialRow) <= 1 && Math.abs(newCol - initialCol) <= 1),
             "ReflectiveCell should move to a neighboring cell."
         );
     }
 
+    /**
+     * Tests that the ReflectiveCell becomes inactive after encountering poison in any adjacent cell.
+     * Verifies that the ReflectiveCell changes its state and color appropriately when it encounters poison.
+     */
     @Test
     public void testInteractionWithPoison() {
         // Positions adjacent to (1,1)
