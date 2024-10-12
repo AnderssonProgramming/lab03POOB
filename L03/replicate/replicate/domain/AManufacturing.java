@@ -61,14 +61,18 @@ public class AManufacturing{
         setThing(5, 5, Pedraza);
         setThing(5, 6, Sanchez);
         
-        // ABYSS
-        // Define rows for each Abyss
-        int pedrazaRow = 3; // Example row for the Pedraza Abyss
-        int sanchesRow = 7; // Example row for the Sanches Abyss
+        // STICKY WALL
+        // Define rows for each Wall
+        int pedrazaRow = 3; // Example row for the Pedraza Wall
+        int sanchesRow = 19; // Example row for the Sanches Wall
     
-        // Create the Abysses with your names
-        Abyss pedrazaAbyss = new Abyss(this, pedrazaRow);
-        Abyss sanchesAbyss = new Abyss(this, sanchesRow);
+        // Create the Walls with your names
+        StickyWall pedrazaWall = new StickyWall(this, pedrazaRow);
+        StickyWall sanchesWall = new StickyWall(this, sanchesRow);
+        
+        // Create a new reflective cel on the sticky wall
+        ReflectiveCell doomed = new ReflectiveCell(this, 3, 5, true);
+        setThing(3, 5, Pedraza);
         
     }
     

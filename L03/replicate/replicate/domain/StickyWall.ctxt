@@ -1,9 +1,9 @@
 #BlueJ class context
-comment0.target=Abyss
+comment0.target=StickyWall
 comment1.params=am\ row
-comment1.target=Abyss(AManufacturing,\ int)
+comment1.target=StickyWall(AManufacturing,\ int)
 comment2.params=
-comment2.target=int\ getAbyssRow()
+comment2.target=int\ getWallRow()
 comment3.params=
 comment3.target=void\ decide()
 comment4.params=

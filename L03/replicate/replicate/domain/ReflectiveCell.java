@@ -33,7 +33,9 @@ public class ReflectiveCell extends Cell {
                 aManufacturing.setThing(row, column, this);
             } else if (target instanceof Poison) {
                 // If target is Poison, change state to inactive
-                nextState = INACTIVE;
+                nextState = INACTIVE;                
+            } else if (target instanceof StickyWall){
+                
             } else {
                 // Bounce back by reversing the direction
                 directionRow = -directionRow;

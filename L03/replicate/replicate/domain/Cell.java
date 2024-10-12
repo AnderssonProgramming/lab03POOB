@@ -2,85 +2,90 @@ package domain;
 
 import java.awt.Color;
 
-/**Information about a cell<br>
-<b>(aManufactuing,row,column,age,state,nextState, color)</b><br>
-<br>
- */
-public class Cell extends Artefact implements Thing{
+public class Cell extends Artefact implements Thing {
     protected char nextState;
     protected Color color;
     private AManufacturing aManufacturing;
-    protected int row,column;
+    protected int row, column;
+    protected boolean isStuck = false;
 
-
-    /**Create a new cell (<b>row,column</b>) in the aManufactuing <b>ac</b>..
-     * @param am 
-     * @param row 
-     * @param column 
-     * @param active
-     */
-    public Cell(AManufacturing am,int row, int column, boolean active){
-        this.aManufacturing=am;
-        this.row=row;
-        this.column=column;
-        state=(active ? Artefact.ACTIVE: Artefact.INACTIVE);
-        nextState=(active ? Artefact.ACTIVE: Artefact.INACTIVE);
-        aManufacturing.setThing(row,column,(Thing)this);    
-        color=Color.black;
+    public Cell(AManufacturing am, int row, int column, boolean active) {
+        this.aManufacturing = am;
+        this.row = row;
+        this.column = column;
+        state = (active ? Artefact.ACTIVE : Artefact.INACTIVE);
+        nextState = state;
+        aManufacturing.setThing(row, column, this);
+        color = Color.BLACK;
     }
-    
 
-    /**Returns the row
-    @return 
-     */
-    public final int getRow(){
+    public final int getRow() {
         return row;
     }
 
-    /**Returns tha column
-    @return 
-     */
-    public final int getColumn(){
+    public final int getColumn() {
         return column;
     }
 
-    
-    /**Returns the color
-    @return 
-     */
-    public final Color getColor(){
+    public final Color getColor() {
         return color;
     }
 
-
-    /**Decide its next state
-     */
-    public void decide(){
-         nextState=(getSteps() % 2 ==0 ? Artefact.ACTIVE:Artefact.INACTIVE);
+    public void decide() {
+        nextState = (getSteps() % 2 == 0 ? Artefact.ACTIVE : Artefact.INACTIVE);
     }
 
-    /**Change its actual state
-     */
-    public void change(){
-        step();
-        state=nextState;
-        
-        // Check if the cell is in a position occupied by the Abyss
-        Thing thingAtPosition = aManufacturing.getThing(row, column);
-        if (thingAtPosition instanceof Abyss) {
-            // Remove the cell from the grid
-            aManufacturing.setThing(row, column, null);
-            state = Artefact.INACTIVE; // Or mark it as removed according to your logic
+    public void change() {        
+        state = nextState;
+
+        // Check if the cell is adjacent to a StickyWall or on top of one
+        if (!isStuck && isAdjacentToStickyWall()) {
+            isStuck = true;
+        }
+
+        // If the cell is stuck, it does not move
+        if (isStuck) {
+            step();
+        } else {
+            // Normal behavior (if any movement logic exists)
         }
     }
-    
-    
-    public int neighborsActive(){
-        return aManufacturing.neighborsActive(row,column);
+
+    private boolean isAdjacentToStickyWall() {
+        // Check current position
+        Thing currentThing = aManufacturing.getThing(row, column);
+        if (currentThing instanceof StickyWall) {            
+            return true;
+        }
+        
+        
+
+        // Check adjacent positions
+        for (int dr = -1; dr <= 1; dr++) {
+            for (int dc = -1; dc <= 1; dc++) {
+                if (dr == 0 && dc == 0) continue;
+                int newRow = row + dr;
+                int newCol = column + dc;
+                if (aManufacturing.inLatice(newRow, newCol)) {
+                    Thing adjacentThing = aManufacturing.getThing(newRow, newCol);
+                    if (adjacentThing instanceof StickyWall) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public int neighborsActive() {
+        return aManufacturing.neighborsActive(row, column);
+    }
+
+    public boolean neighborIsEmpty(int dr, int dc) {
+        return aManufacturing.isEmpty(row + dr, column + dc);
     }
     
-    public boolean neighborIsEmpty(int dr,int dc){
-        return aManufacturing.isEmpty(row+dr,column+dc);
-    }    
-
+    public boolean getIsStuck(){
+        return isStuck;
+    }
 }

@@ -2,39 +2,39 @@ package domain;
 
 import java.awt.Color;
 
-public class Abyss implements Thing {
+public class StickyWall implements Thing {
     private AManufacturing aManufacturing;
-    private int abyssRow;
+    private int wallRow;
     private int startColumn, endColumn;
     private Color color;
 
-    public Abyss(AManufacturing am, int row) {
+    public StickyWall(AManufacturing am, int row) {
         this.aManufacturing = am;
-        this.abyssRow = row;
+        this.wallRow = row;
         this.color = Color.BLACK;
 
         int size = am.getSize();
         this.startColumn = 0;      // Start at the first column
         this.endColumn = size - 1; // End at the last column
 
-        // Place the Abyss on the selected row
+        // Place the StickyWall on the selected row
         for (int c = startColumn; c <= endColumn; c++) {
-            aManufacturing.setThing(abyssRow, c, this);
+            aManufacturing.setThing(wallRow, c, this);
         }
     }
 
-    public int getAbyssRow() {
-        return abyssRow;
+    public int getWallRow() {
+        return wallRow;
     }
 
     @Override
     public void decide() {
-        // The Abyss does not perform any action in decide
+        // The StickyWall does not perform any action in decide
     }
 
     @Override
     public void change() {
-        // The Abyss does not change state
+        // The StickyWall does not change state
     }
 
     @Override
