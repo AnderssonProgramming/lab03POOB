@@ -19,7 +19,7 @@ public class AManufacturingGUI extends JFrame {
     public static final int SIDE = 11;
 
     public final int SIZE;
-    private JButton ticTacButton;
+    private JButton ticTacButton
     private JPanel controlPanel;
     private PhotoAManufacturing photo;
     private AManufacturing aManufacturing;
