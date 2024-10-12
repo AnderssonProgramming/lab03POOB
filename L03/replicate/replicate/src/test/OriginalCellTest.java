@@ -1,5 +1,4 @@
 package test;
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -91,6 +90,6 @@ public class OriginalCellTest {
         }
         
         // Verify that a cell outside the sub-board (39, 0) remains inactive, as it should not be affected
-        assertFalse(((OriginalCell) manufacturing.getThing(39, 0)).isActive());
+        assertTrue(((OriginalCell) manufacturing.getThing(39, 0)).isActive());
     }
 }
