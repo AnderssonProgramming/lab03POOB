@@ -55,6 +55,12 @@ public class AManufacturing{
         setThing(25, 25, alice);
         setThing(30, 30, bob);
         
+        // Reflective Cells - unitTest compilation in program
+        ReflectiveCell Pedraza = new ReflectiveCell(this, 5, 5, true);
+        ReflectiveCell Sanchez = new ReflectiveCell(this, 5, 6, true);
+        setThing(5, 5, Pedraza);
+        setThing(5, 6, Sanchez);
+        
     }
     
     public int neighborsActive(int r, int c){

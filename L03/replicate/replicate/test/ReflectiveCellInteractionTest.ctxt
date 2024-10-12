@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ReflectiveCellInteractionTest
+comment1.params=
+comment1.target=void\ setUp()
+comment2.params=
+comment2.target=void\ testPedrazaAndSanchesInteraction()
+comment3.params=row\ col
+comment3.target=boolean\ isWithinBounds(int,\ int)
+numComments=4
