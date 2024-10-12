@@ -27,7 +27,11 @@ public class AManufacturing{
     }
 
     public void setThing(int r, int c, Thing e){
-        lattice[r][c]=e;
+        if (lattice[r][c] instanceof StickyWall){
+            System.out.println("There's a sticky wall here. You cannot create anything here.");
+        }else{
+            lattice[r][c]=e;
+        }
     }
 
     public void someThings(){  

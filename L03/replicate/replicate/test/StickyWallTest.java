@@ -7,7 +7,7 @@ import domain.*;
 
 public class StickyWallTest {
     private AManufacturing manufacturing;
-    private StickyWall StickyWall;
+    private StickyWall stickyWall;
     private ReflectiveCell reflectiveCell;
     private TouristCell touristCell;
 
@@ -15,55 +15,52 @@ public class StickyWallTest {
     public void setUp() {
         manufacturing = new AManufacturing();
 
-        // Crear un StickyWall en la fila 5
+        // Create a StickyWall on row 5
         int wallRow = 5;
-        StickyWall = new StickyWall(manufacturing, wallRow);
+        stickyWall = new StickyWall(manufacturing, wallRow);
     }
 
     @Test
-    public void testReflectiveCellStuckWhenCreatedOnStickyWall() {
-        // Crear una ReflectiveCell sobre el StickyWall
+    public void testReflectiveCellNotCreatedWhenOnStickyWall() {
+        // Create a ReflectiveCell on the StickyWall
         reflectiveCell = new ReflectiveCell(manufacturing, 5, 10, true);
-        manufacturing.setThing(reflectiveCell.getRow(), reflectiveCell.getColumn(), reflectiveCell);
-
-        // Verificar que la célula está pegada al ser creada sobre el StickyWall
-        assertTrue(reflectiveCell.getIsStuck(), "La ReflectiveCell debería estar pegada al ser creada sobre el StickyWall.");
-
-        // Intentar mover la célula
-        int initialRow = reflectiveCell.getRow();
-        int initialCol = reflectiveCell.getColumn();
-        reflectiveCell.decide();
-        reflectiveCell.change();
-
-        // Verificar que la posición no ha cambiado
-        assertEquals(initialRow, reflectiveCell.getRow(), "La ReflectiveCell no debería moverse una vez pegada.");
-        assertEquals(initialCol, reflectiveCell.getColumn(), "La ReflectiveCell no debería moverse una vez pegada.");
+        manufacturing.setThing(reflectiveCell.getRow(), reflectiveCell.getColumn(), reflectiveCell);        
+        
+        // Verify that when something is created at that position, it actually isn’t created, and after this, the instance of the Thing at that position is still a wall
+        boolean isAWall = false; 
+        Thing targetThing = manufacturing.getThing(5, 10);
+        
+        if (targetThing instanceof StickyWall) {
+            isAWall = true;
+        }
+        
+        assertTrue(isAWall, "The thing at this position should still be an instance of StickyWall.");
     }
 
     @Test
     public void testTouristCellStuckWhenCreatedAdjacentToStickyWall() {
-        // Crear una TouristCell adyacente al StickyWall
+        // Create a TouristCell adjacent to the StickyWall
         touristCell = new TouristCell(manufacturing, 4, 10, true);
         manufacturing.setThing(touristCell.getRow(), touristCell.getColumn(), touristCell);
 
-        // Verificar que la célula inicialmente no está pegada
-        assertFalse(touristCell.getIsStuck(), "La TouristCell no debería estar pegada inicialmente.");
+        // Verify that the cell is initially not stuck
+        assertFalse(touristCell.getIsStuck(), "The TouristCell should not initially be stuck.");
 
-        // Ejecutar decide y change
+        // Execute decide and change
         touristCell.decide();
         touristCell.change();
 
-        // Verificar que la célula está pegada después de interactuar con el StickyWall
-        assertTrue(touristCell.getIsStuck(), "La TouristCell debería estar pegada al estar adyacente al StickyWall.");
+        // Verify that the cell is stuck after interacting with the StickyWall
+        assertTrue(touristCell.getIsStuck(), "The TouristCell should be stuck when adjacent to the StickyWall.");
 
-        // Intentar mover la célula nuevamente
+        // Attempt to move the cell again
         int initialRow = touristCell.getRow();
         int initialCol = touristCell.getColumn();
         touristCell.decide();
         touristCell.change();
 
-        // Verificar que la posición no ha cambiado
-        assertEquals(initialRow, touristCell.getRow(), "La TouristCell no debería moverse una vez pegada.");
-        assertEquals(initialCol, touristCell.getColumn(), "La TouristCell no debería moverse una vez pegada.");
+        // Verify that the position has not changed
+        assertEquals(initialRow, touristCell.getRow(), "The TouristCell should not move once stuck.");
+        assertEquals(initialCol, touristCell.getColumn(), "The TouristCell should not move once stuck.");
     }
 }
