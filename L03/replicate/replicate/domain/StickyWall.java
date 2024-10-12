@@ -1,13 +1,38 @@
+/**
+ * The StickyWall class represents an immovable barrier within the manufacturing simulation environment.
+ * It is a passive entity that prevents other cells from moving past it, effectively creating an obstacle in the lattice.
+ */
 package domain;
 
 import java.awt.Color;
 
 public class StickyWall implements Thing {
+    /**
+     * Reference to the manufacturing environment where the wall resides.
+     */
     private AManufacturing aManufacturing;
+
+    /**
+     * The row where the StickyWall is located.
+     */
     private int wallRow;
+
+    /**
+     * The start and end columns defining the extent of the StickyWall.
+     */
     private int startColumn, endColumn;
+
+    /**
+     * The color of the StickyWall.
+     */
     private Color color;
 
+    /**
+     * Constructs a StickyWall that spans the entire row of the manufacturing lattice.
+     *
+     * @param am  The manufacturing environment where the wall is created.
+     * @param row The row where the StickyWall is placed.
+     */
     public StickyWall(AManufacturing am, int row) {
         this.aManufacturing = am;
         this.wallRow = row;
@@ -23,30 +48,56 @@ public class StickyWall implements Thing {
         }
     }
 
+    /**
+     * Gets the row where the StickyWall is located.
+     *
+     * @return The row of the StickyWall.
+     */
     public int getWallRow() {
         return wallRow;
     }
 
+    /**
+     * The StickyWall does not perform any action in its decide step.
+     */
     @Override
     public void decide() {
         // The StickyWall does not perform any action in decide
     }
 
+    /**
+     * The StickyWall does not change state.
+     */
     @Override
     public void change() {
         // The StickyWall does not change state
     }
 
+    /**
+     * Gets the color of the StickyWall.
+     *
+     * @return The color of the StickyWall.
+     */
     @Override
     public Color getColor() {
         return color;
     }
 
+    /**
+     * Indicates that the StickyWall is always active.
+     *
+     * @return True, as the StickyWall is always active.
+     */
     @Override
     public boolean isActive() {
         return true; // Always active
     }
 
+    /**
+     * Gets the shape representation of the StickyWall.
+     *
+     * @return The shape representation, which is a square.
+     */
     @Override
     public int shape() {
         return Thing.SQUARE; // Represented as a square

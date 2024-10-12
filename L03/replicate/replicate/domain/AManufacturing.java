@@ -25,7 +25,16 @@ public class AManufacturing{
     public Thing getThing(int r,int c){
         return lattice[r][c];
     }
-
+    
+    /**
+     * Places a Thing object at the specified row and column in the lattice grid. 
+     * If the specified position already contains a StickyWall, the new Thing will 
+     * not be placed, and a message will be printed to indicate this.
+     *
+     * @param r the row position in the lattice where the Thing should be placed
+     * @param c the column position in the lattice where the Thing should be placed
+     * @param e the Thing object to be placed in the lattice at the specified position
+     * */
     public void setThing(int r, int c, Thing e){
         if (lattice[r][c] instanceof StickyWall){
             System.out.println("There's a sticky wall here. You cannot create anything here.");

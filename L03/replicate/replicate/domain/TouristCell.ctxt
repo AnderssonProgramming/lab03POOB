@@ -2,10 +2,14 @@
 comment0.target=TouristCell
 comment1.params=am\ row\ column\ active
 comment1.target=TouristCell(AManufacturing,\ int,\ int,\ boolean)
+comment1.text=\r\n\ Constructs\ a\ TouristCell\ with\ the\ given\ parameters.\r\n\r\n\ @param\ am\ \ \ \ \ \ The\ manufacturing\ environment\ where\ the\ cell\ resides.\r\n\ @param\ row\ \ \ \ \ The\ initial\ row\ position\ of\ the\ cell.\r\n\ @param\ column\ \ The\ initial\ column\ position\ of\ the\ cell.\r\n\ @param\ active\ \ Whether\ the\ cell\ is\ initially\ active.\r\n
 comment2.params=
 comment2.target=void\ decide()
+comment2.text=\r\n\ Determines\ the\ next\ action\ for\ the\ cell.\r\n\ If\ the\ cell\ is\ active,\ it\ moves\ towards\ the\ center\ of\ the\ lattice.\r\n\ If\ inactive,\ it\ moves\ towards\ the\ origin\ (0,\ 0).\r\n
 comment3.params=
 comment3.target=void\ change()
+comment3.text=\r\n\ Updates\ the\ state\ and\ position\ of\ the\ cell.\r\n\ If\ the\ cell\ is\ stuck,\ it\ does\ not\ move.\ Otherwise,\ it\ moves\ to\ the\ calculated\ next\ position.\r\n
 comment4.params=
 comment4.target=void\ updateColor()
+comment4.text=\r\n\ Updates\ the\ color\ of\ the\ cell\ based\ on\ its\ current\ state.\r\n\ Active\ cells\ are\ colored\ orange,\ while\ inactive\ cells\ are\ colored\ yellow.\r\n
 numComments=5
