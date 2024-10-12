@@ -64,6 +64,14 @@ public class Cell extends Artefact implements Thing{
     public void change(){
         step();
         state=nextState;
+        
+        // Check if the cell is in a position occupied by the Abyss
+        Thing thingAtPosition = aManufacturing.getThing(row, column);
+        if (thingAtPosition instanceof Abyss) {
+            // Remove the cell from the grid
+            aManufacturing.setThing(row, column, null);
+            state = Artefact.INACTIVE; // Or mark it as removed according to your logic
+        }
     }
     
     

@@ -61,6 +61,15 @@ public class AManufacturing{
         setThing(5, 5, Pedraza);
         setThing(5, 6, Sanchez);
         
+        // ABYSS
+        // Define rows for each Abyss
+        int pedrazaRow = 3; // Example row for the Pedraza Abyss
+        int sanchesRow = 7; // Example row for the Sanches Abyss
+    
+        // Create the Abysses with your names
+        Abyss pedrazaAbyss = new Abyss(this, pedrazaRow);
+        Abyss sanchesAbyss = new Abyss(this, sanchesRow);
+        
     }
     
     public int neighborsActive(int r, int c){
