@@ -1,8 +1,8 @@
 package test;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import domain.AManufacturing;
 import domain.OriginalCell;
@@ -14,7 +14,6 @@ import domain.OriginalCell;
  * @author Cristian Santiago Pedraza Rodríguez
  * @version 2024
  */
-
 public class OriginalCellTest {
 
     private AManufacturing manufacturing;
@@ -24,7 +23,7 @@ public class OriginalCellTest {
     /**
      * Sets up the AManufacturing instance before each test.
      */
-    @Before
+    @BeforeEach
     public void setUp() {
         manufacturing = new AManufacturing();
     }
@@ -92,6 +91,6 @@ public class OriginalCellTest {
         }
         
         // Verify that a cell outside the sub-board (39, 0) remains inactive, as it should not be affected
-        assertTrue(((OriginalCell) manufacturing.getThing(39, 0)).isActive());
+        assertFalse(((OriginalCell) manufacturing.getThing(39, 0)).isActive());
     }
 }
